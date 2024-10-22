@@ -1,0 +1,44 @@
+<h1>Show file: {{file}}.exe</h1>
+<a href="{{path('first_index')}}">Back to index</a>
+<br>
+
+<h3>Variable declaration</h3>
+
+{% set pi =3.14 %}
+{{pi}}
+<br>
+<h3>This is the first element of our table: </h3>
+{% set table=[1,3,5,7] %}
+{{table[0]}}
+
+<h2>IF statement</h2>
+{% if 3 not in table %}
+    <p>Our table doesn't contain the number 100</p>
+    {%elseif 3 in table%}
+    <p>5 exist in our table</p>
+    {%else%}
+    <p>nothing</p>
+{% endif %}
+
+<h3>FOR statement</h3>
+<h4>All the elements of our table</h4>
+{% for i in table %}
+    {{i}}
+{% endfor %}
+<br>
+<h4>for i in range(0,9)</h4>
+{% for i in range(0,9) %}
+    {{i}}
+{% endfor %}
+
+<h3>Filters</h3>
+{{'capitalize: '}}
+{{'yassmine' | capitalize}} <br>
+{{'upper: '}}
+{{'yassmine' | upper}} <br>
+{{'lower: '}}
+{{'YASSMINE' | lower}} <br>
+{{'trim: '}}
+{{"   phrase to trim    "| trim | capitalize }} <br>
+{{"Current date with the method date(): "}}
+{{'now' | date_modify('+1 day') | date('D/F/Y') }}

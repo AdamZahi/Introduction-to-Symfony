@@ -1,0 +1,38 @@
+<h1>Our list are:</h1>
+<form action="{{path('more10_author')}}">
+    <label for=""> Minimum number of books</label>
+    <input name="min" type="number">
+    <label for=""> max number of books</label>
+    <input name="max" type="number">
+    <input type="submit" value="save">
+</form>
+
+{% if list is defined and list is not empty %}
+    <table border="2" width="555">
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>number of books</td>
+            <td>Action</td>
+        </tr>
+
+    {%for author in list %}
+        <tr>
+            <td>{{author.id}}</td>
+            <td>{{author.username | upper}}</td>
+            <td>{{author.nbBook}}</td>
+            <td>
+                    <a href="{{ path('author_details', { 'id': author.getId }) }}">Details</a>
+                    <a href="{{ path('author_delete', { 'id': author.getId }) }}">Delete</a>
+                </td>
+        </tr>
+        {%endfor%}
+
+    </table>
+{% else %}
+    <p>No author is found!</p>
+{% endif %}
+<a href="{{path('author_add')}}">Add a new author</a>
+<br>
+<a href="{{path('add_book')}}">Add a new book</a>
+

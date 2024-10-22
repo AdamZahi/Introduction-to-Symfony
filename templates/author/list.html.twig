@@ -1,0 +1,27 @@
+<h1>Our {{authors | length}} authors are:</h1>
+{% if authors is defined and authors is not empty %}
+    <table border="2">
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>number of books</td>
+            <td>Picture</td>
+        </tr>
+
+        {%set nbrBooks=0%}
+        {%for author in authors %}
+        {%set nbrBooks = nbrBooks + author.nb_books%}
+        <tr>
+            <td>{{author.id}}</td>
+            <td>{{author.username | upper}}</td>
+            <td>{{author.nb_books}}</td>
+            <td><img src="{{ asset(author.picture) }}"  alt="error"></td>
+            <td><a href="{{ path('authorDetail_author', { 'id': author.id }) }}">details</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+{% else %}
+    <p>No author is found!</p>
+{% endif %}
+<p>Their total number of books is {{nbrBooks}}</p>
+

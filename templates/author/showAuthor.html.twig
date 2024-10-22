@@ -1,0 +1,10 @@
+<h1 style="text-align: center;">Author Details</h1>
+<div style="text-align: center;">
+    <img src="{{ asset(author.picture) }}" alt="{{ author.username }}" />
+    <h2>{{ author.username }}</h2>
+    <p>Email: {{ author.email }}</p>
+    <p>Number of Books: {{ author.nb_books }}</p>
+</div>
+<div style="text-align: center;">
+    <a href="{{path('list_author')}}" >Back to list</a>
+</div>
